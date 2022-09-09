@@ -15,6 +15,8 @@ protected:
     };
 
 public:
+    LinkedList();
+    ~LinkedList();
     const type getItemAt(int pos) const;
     void push(const type &value, int pos, string position);
     void pushBack(const type &value);
@@ -26,6 +28,8 @@ public:
     type popAt(int pos);
     const int getSize() const;
     vector<type> traverse_to_vector();
+    void display();
+
 
 private:
     Node *head_;
@@ -51,6 +55,22 @@ public:
         }
     };
 };
+
+template <typename type>
+LinkedList<type>::LinkedList()
+{
+    head_ = nullptr;
+    tail_ = nullptr;
+    size_ = 0;
+}
+
+template <typename type>
+LinkedList<type>::~LinkedList()
+{
+    while (size_)
+        pop();
+}
+
 template <typename type>
 void LinkedList<type>::push(const type &value, int pos, string position)
 {
@@ -224,3 +244,4 @@ vector<type> LinkedList<type>::traverse_to_vector()
     }
     return output;
 }
+
